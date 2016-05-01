@@ -1,0 +1,26 @@
+/*pre {
+    overflow-x: auto;
+    background-color: #e2c7ea;
+}
+pre code {
+    overflow-wrap: normal;
+    white-space: pre;
+    font-weight: bold;
+}*/
+
+.row {
+    margin-left: -20px;
+    *zoom: 1;
+    margin-top: 30px;
+}
+
+#block_response{
+	background-color: #ec971f;
+}
+
+
+.dropdown-menu > li > a:hover {
+    background-color: #449d44;
+    background-image: none;
+}
+
