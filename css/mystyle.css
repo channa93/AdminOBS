@@ -34,3 +34,7 @@ html, body {
 /*.active{
 	background-color: green;
 }*/
+
+.nav-pills > li > a:hover{
+  background-color: red;
+}

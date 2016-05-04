@@ -79,6 +79,16 @@ app.controller('userController', function($scope, $http, $compile, $location) {
 		$('#dropdownUserStatus').html(statusText+CARET);
 	}
 
+	$scope.acceptUser = function(user){
+		debugger;
+	}
+	$scope.rejectUser = function(user){
+		debugger;
+	}
+	$scope.viewUser = function(user){
+		debugger;
+	}
+
 
 	
 });

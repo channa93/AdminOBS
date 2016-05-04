@@ -102,6 +102,9 @@
 				        	<button type="button" class="btn btn-danger btn-xs" aria-label="Left Align" ng-click="rejectUser(data)"> <!-- ng-click="confirmRemoveFunction(data.id, data.controller)" -->
 				        	  <span class="glyphicon  glyphicon-remove" aria-hidden="true"></span> Reject
 				        	</button>
+				        	<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align" ng-click="viewUser(data)"> <!-- ng-click="confirmRemoveFunction(data.id, data.controller)" -->
+				        	  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View
+				        	</button>
 				        </td>        
 				      </tr>
 

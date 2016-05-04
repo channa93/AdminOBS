@@ -49,6 +49,9 @@ app.controller('productController', function($scope, $http, $compile, $location)
 	$scope.rejectProduct = function(product){
 		debugger;
 	}
+	$scope.viewProduct = function(product){
+		debugger;
+	}
 });
 
 $(document).ready(function() {
