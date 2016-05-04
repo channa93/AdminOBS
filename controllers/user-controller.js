@@ -22,6 +22,7 @@ app.controller('userController', function($scope, $http, $compile, $location) {
 		$http(req).then(function(response){
 			console.log('Caller $scope.getAllUsers: ',response);
 			if(response.data['code']==1){
+				constructFullUsersInfo(response.data.data); // call to utils.js
 				$scope.dataList = response.data.data;
 				$scope.backupDataList = response.data.data; 
 			}else{
@@ -43,7 +44,7 @@ app.controller('userController', function($scope, $http, $compile, $location) {
 			var newDataList = [];
 			// loop through all datas to find the related productStatus that user wants 
 			angular.forEach($scope.backupDataList, function(user){
-				if(user.accountType == userType){
+				if(user.accountType == typeText){
 					newDataList.push(user);
 				}
 	        })
@@ -61,14 +62,13 @@ app.controller('userController', function($scope, $http, $compile, $location) {
 	}
 
 	$scope.clickUserStatus = function(userStatus, statusText){
-		debugger;
 		if(userStatus == 77){ // get all status of product
 			$scope.dataList = $scope.backupDataList;
 		}else{
 			var newDataList = [];
 			// loop through all datas to find the related productStatus that user wants 
 			angular.forEach($scope.backupDataList, function(user){
-				if(user.status == userStatus){
+				if(user.status == statusText){
 					newDataList.push(user);
 				}
 	        })
@@ -78,6 +78,9 @@ app.controller('userController', function($scope, $http, $compile, $location) {
 	    }
 		$('#dropdownUserStatus').html(statusText+CARET);
 	}
+
+
+	
 });
 
 // $(document).ready(function(){

@@ -77,20 +77,22 @@
 				        <td>  {{data.displayName}}</td>
 				        <!-- <td>  <img src="{{data.avatar}}" width="200" height="200"> </td> -->
 				   
-				        <td>    	
-				        	<table>
+				        <td> 
+				        	{{data.accountType}}   	
+				        	<!-- <table>
 				        		<tr>
 				        			<td ng-show="(data.accountType==1)" > Normal</td>
 				        			<td ng-show="(data.accountType==2)" > Silver</td>
 				        			<td ng-show="(data.accountType==3)" > Gold</td>
 				        			<td ng-show="(data.accountType==4)" > Platinium</td>
 				        		</tr>
-				        	</table>
+				        	</table> -->
 				        </td>
 
 				        <td>
-				        	<span ng-show="data.status==1">Active</span>
-				        	<span ng-show="data.status==0">Block</span>
+				        	{{data.status}}
+				        	<!-- <span ng-show="data.status==1">Active</span>
+				        	<span ng-show="data.status==0">Block</span> -->
 				        </td>
 				        <td> {{data.createdDate}}</td>
 				        <td style="vertical-align: middle;">

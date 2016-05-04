@@ -25,7 +25,7 @@
         	</div> --> 
 
         	<div class="btn-group" style="width:75%; ">
-        	  	<button type="button" class="btn btn-primary  dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownProductStatus1">
+        	  	<button type="button" class="btn btn-primary  dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownProductStatus">
         	    All status <span class="caret"></span>
         	  	</button>
         	  	<ul class="dropdown-menu" >
@@ -75,13 +75,14 @@
 				        	{{data.description}}
 				        </td>
 				        <td>
-				        	<!-- <p>Status: {{data.status.status}}</p> -->
-				        	<p ng-show="(data.status.status==1)">Review</p>
+				        	
+				        	<!-- <p ng-show="(data.status.status==1)">Review</p>
 				        	<p ng-show="(data.status.status==2)">Accepted</p>
 				        	<p ng-show="(data.status.status==3)">Rejected</p>
 				        	<p ng-show="(data.status.status==4)">Available/Bidding</p>
-				        	<p ng-show="(data.status.status==5)">Sold</p>
-				        	<p>Date Approved: {{data.status.date}}</p>
+				        	<p ng-show="(data.status.status==5)">Sold</p> -->
+				        	<p>{{data.status.status}}</p>
+				        	<!-- <p>Date Approved: {{data.status.date}}</p> -->
 				        </td>
 				        <td>
 				        	<!-- <img src="data.imageGallery"> -->

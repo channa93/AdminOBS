@@ -5,7 +5,7 @@ app.controller('productController', function($scope, $http, $compile, $location)
 		1:"Review",
 		2:"Accepted",
 		3:"Rejcted",
-		4:"Available/Bidding",
+		4:"Bidding",
 		5:"Sold",
 	}
 	
@@ -15,6 +15,7 @@ app.controller('productController', function($scope, $http, $compile, $location)
 		$http(req).then(function(response){
 			console.log('Caller $scope.getAllProducts: ',response);
 			if(response.data['code']==1){
+				constructFullProductsInfo(response.data.data);
 				$scope.dataList = response.data.data;
 				$scope.backupDataList = response.data.data
 			}else{
@@ -31,7 +32,7 @@ app.controller('productController', function($scope, $http, $compile, $location)
 			var newDataList = [];
 			// loop through all datas to find the related productStatus that user wants 
 			angular.forEach($scope.backupDataList, function(product){
-				if(product.status.status == productStatus){
+				if(product.status.status == statusText){
 					newDataList.push(product);
 				}
 	        })
