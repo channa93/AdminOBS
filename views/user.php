@@ -1,6 +1,7 @@
 <h1>User list page</h1>
 <div ng-controller="userController" style="margin: inherit;" ng-init="getAllUsers()">
 	<div class="row">
+		<!-- search box -->
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 	        <div class="input-group">
 	            <input type="text" class="form-control" placeholder="Search ..." ng-model="keyword">
@@ -9,6 +10,48 @@
 	            </div>
 	        </div>
 		</div>
+
+		<!-- select list for account type search -->
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        	<!-- <div class="btn-group" style="width:75%; ">
+        	  	<button type="button" class="btn btn-danger  dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownUserType">
+        	    All types <span class="caret"></span>
+        	  	</button>
+        	  	<ul class="dropdown-menu" >
+	        	    <li><a href="#" ng-click="clickUserType(0,'All types')">All types</a></li>
+	        	    <li><a href="#" ng-click="clickUserType(1, 'Normal')">Normal</a></li>
+	        	    <li><a href="#" ng-click="clickUserType(2, 'Silver')">Silver</a></li>
+	        	    <li><a href="#" ng-click="clickUserType(3, 'Gold')">Gold</a></li>
+	        	    <li><a href="#" ng-click="clickUserType(4, 'Platinium')">Platinium</a></li> 
+        	  	</ul>
+        	</div> -->
+        	<div class="btn-group" style="width:75%; ">
+        	  	<button type="button" class="btn btn-primary  dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownUserType">
+        	    All types <span class="caret"></span>
+        	  	</button>
+        	  	<ul class="dropdown-menu" >
+        	    	<li ng-repeat="(key, value) in userTypeStatus">	 <!-- (key,value) = (number,text) -->
+        	    		<a href="#"  ng-click="clickUserType(key,value)">{{value}}</a>	    		      	    	
+        	    	</li>     	    
+        	  	</ul>
+        	</div> 
+       	</div>
+
+       	<!-- select list for user status serarch -->
+       	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        	<div class="btn-group" style="width:75%; ">
+        	  	<button type="button" class="btn btn-warning  dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownUserStatus">
+        	    All status user <span class="caret"></span>
+        	  	</button>
+        	  	<ul class="dropdown-menu" >
+	        	    <!-- <li><a href="#" ng-click="clickUserStatus(0, 'Block')">Block</a></li>
+	        	    <li><a href="#" ng-click="clickUserStatus(1,'Active')">Active</a></li> -->
+	        	    <li ng-repeat="(key, value) in userStatus">
+	        	    	<a href="#" ng-click="clickUserStatus(key, value)">{{value}}</a>
+	        	    </li>
+        	  	</ul>
+        	</div>
+       	</div>
 	</div>
 	<div class="row" >
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -21,6 +64,7 @@
 				        <th>Dispaly Name</th>
 				        <!-- <th>Profile Picture</th> -->
 				        <th>Account Type</th>
+				        <th>Status</th>
 				        <th>Created Account</th>
 				        <th>Options</th>
 				      </tr>
@@ -36,7 +80,6 @@
 				        <td>    	
 				        	<table>
 				        		<tr>
-				        			<td>{{data.price}}</td>
 				        			<td ng-show="(data.accountType==1)" > Normal</td>
 				        			<td ng-show="(data.accountType==2)" > Silver</td>
 				        			<td ng-show="(data.accountType==3)" > Gold</td>
@@ -45,13 +88,16 @@
 				        	</table>
 				        </td>
 
-				        
+				        <td>
+				        	<span ng-show="data.status==1">Active</span>
+				        	<span ng-show="data.status==0">Block</span>
+				        </td>
 				        <td> {{data.createdDate}}</td>
 				        <td style="vertical-align: middle;">
-				        	<button type="button" class="btn btn-primary btn-xs" aria-label="Left Align" ng-click="editFunction(data)">
+				        	<button type="button" class="btn btn-primary btn-xs" aria-label="Left Align" ng-click="acceptUser(data)">
 				        	  <span class="glyphicon  glyphicon-ok" aria-hidden="true"></span> Accept
 				        	</button>
-				        	<button type="button" class="btn btn-danger btn-xs" aria-label="Left Align" ng-click="clickDelete(data)"> <!-- ng-click="confirmRemoveFunction(data.id, data.controller)" -->
+				        	<button type="button" class="btn btn-danger btn-xs" aria-label="Left Align" ng-click="rejectUser(data)"> <!-- ng-click="confirmRemoveFunction(data.id, data.controller)" -->
 				        	  <span class="glyphicon  glyphicon-remove" aria-hidden="true"></span> Reject
 				        	</button>
 				        </td>        

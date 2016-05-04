@@ -19,6 +19,18 @@ html, body {
 }
 
 
-.navbar {
-    height: 100px; /* Whatever you want. */
-}
+/*.navbar {
+    height: 100px; 
+}*/
+/*.nav-pills > .active > a, .nav-pills > .active > a:hover {
+    background-color: red;
+}*/
+
+
+/*.nav-pills{
+	background-color: red;
+}*/
+
+/*.active{
+	background-color: green;
+}*/

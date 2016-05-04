@@ -1,4 +1,13 @@
 app.controller('productController', function($scope, $http, $compile, $location) {
+	$scope.backupDataList = [];
+	$scope.productStatus ={
+		0:'All Status',
+		1:"Review",
+		2:"Accepted",
+		3:"Rejcted",
+		4:"Available/Bidding",
+		5:"Sold",
+	}
 	
 	$scope.getAllProducts = function() {	
 		var req = getObjRequest(URL_ALL_PRODUCTS, 'GET');
@@ -6,7 +15,8 @@ app.controller('productController', function($scope, $http, $compile, $location)
 		$http(req).then(function(response){
 			console.log('Caller $scope.getAllProducts: ',response);
 			if(response.data['code']==1){
-				$scope.dataList = response.data.data; 
+				$scope.dataList = response.data.data;
+				$scope.backupDataList = response.data.data
 			}else{
 				alert(response.data['description']);
 			}		
@@ -14,7 +24,64 @@ app.controller('productController', function($scope, $http, $compile, $location)
 			console.log(error);
 		});
 	}
+	$scope.clickProductStatus = function(productStatus,statusText){
+		if(productStatus == 0){ // get all status of product
+			$scope.dataList = $scope.backupDataList;
+		}else{
+			var newDataList = [];
+			// loop through all datas to find the related productStatus that user wants 
+			angular.forEach($scope.backupDataList, function(product){
+				if(product.status.status == productStatus){
+					newDataList.push(product);
+				}
+	        })
+
+	        // assign search to dataList scope variable
+	        $scope.dataList = newDataList;
+	    }
+	    $('#dropdownProductStatus').html(statusText+CARET);
+	}
+
+	$scope.acceptProduct = function(product){
+		debugger;
+	}
+	$scope.rejectProduct = function(product){
+		debugger;
+	}
 });
+
+$(document).ready(function() {
+	
+
+	$('ul#my-navbar li a').click(function() {  // when click a in ul where id=my-navbar
+	    $('ul#my-navbar li.active').removeClass('active');
+	    $(this).closest('li').addClass('active');
+	});
+
+	// TODO : can not handle on select option change
+
+	// $('select').on('change', function (e) {
+	// 	debugger;
+	//     var optionSelected = $("option:selected", this);
+	//     var valueSelected = this.value;
+	// });
+
+	// $('select#productStatus').change(function(){
+	// 	debugger;
+	//     var selected = $(this).find("option:selected").val();
+	//     alert(selected);
+	// });
+
+	// function selectProductStatus(ele) {
+	// 	debugger;
+	// }
+
+	
+
+
+});
+
+
 // 	$scope.getListControllers = function() {
 // 		var req = getObjRequest(URL_CTRLS, 'GET', {});
 
