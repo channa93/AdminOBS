@@ -14,4 +14,6 @@ const HEADERS ={
 // url admin 
 const URL_ADMIN = IP_SERVER+"/obs/admin/testFunction/Admin/login";
 const ACCESSKEY = "NTcxZGRmYjMyNTE4MGViYzBkMDAwMDI5MjAxNi0wNC0yNSAxNjowNDoyM09ubGluZV9CaWRkaW5nX1N5c3RlbQ==";
-
+// const IP_SOCKET = "http://188.166.183.25:3000/socket.io/socket.io.js";
+const IP_SOCKET = "http://localhost:3000";
+// const IP_SOCKET = "test";

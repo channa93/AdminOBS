@@ -42,8 +42,10 @@
 		<!-- <script  src="js/utils.js"></script> 
 		<script  src="js/myapp.js"></script> -->
 
+		<script  type="text/javascript" src="js/socket-io-client.js"></script> 
 		<script  type="text/javascript" src="js/app.js"></script> 
 		<script  type="text/javascript" src="js/loading-bar.js"></script> 
+		<script  type="text/javascript" src="js/socket-io-module.js"></script> 
 		<script  type="text/javascript" src="controllers/utils.js"></script> 
 		<script  type="text/javascript" src="controllers/product-controller.js"></script> 
 		<script  type="text/javascript" src="controllers/user-controller.js"></script> 

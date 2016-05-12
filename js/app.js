@@ -1,6 +1,7 @@
-var app = angular.module('myApp', ['ngRoute','angular-loading-bar']);
+var app = angular.module('myApp', ['ngRoute','angular-loading-bar','btford.socket-io']);
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
    // $locationProvider.html5Mode(true);
+   
    $locationProvider.html5Mode({
      enabled: true,
      requireBase: false
@@ -44,10 +45,21 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 }]);
 
 
+app.factory('socket', function (socketFactory) {
+  debugger;
+  return socketFactory({
+    prefix: '',  // by default prefix is socket:
+    ioSocket: io.connect(IP_SOCKET)
+  });
+});
+
+
 // // overide base url to place where this project is placed in
 // $(document).ready(function(){
 //     $("#base-url").attr("href", CLIENT_URL);
 // });
+
+
 
 
 

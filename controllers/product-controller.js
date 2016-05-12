@@ -1,4 +1,4 @@
-app.controller('productController', function($scope, $http, $compile, $location) {
+app.controller('productController', function($scope, $http, $compile, $location, socket) {
 	$scope.backupDataList = [];
 	$scope.productStatus ={
 		0:'All Status',
@@ -24,6 +24,30 @@ app.controller('productController', function($scope, $http, $compile, $location)
 		}, function(error){
 			console.log(error);
 		});
+
+		// Test socket for admin connect
+		var dataEmit = {
+			header:{
+				from:"admin",
+				to:"haha"
+			},
+			body:{
+				data:{
+					code:"09",
+					data:{},
+					description:"haha"
+				}
+			}
+		}
+		socket.emit('sendMessage', dataEmit);
+		socket.on('angularConnect', function(data) {
+			debugger;
+		});
+		debugger;
+		socket.on('sendMessage1', function(data) {
+			debugger;
+		});
+
 	}
 	$scope.clickProductStatus = function(productStatus,statusText){
 		if(productStatus == 0){ // get all status of product
