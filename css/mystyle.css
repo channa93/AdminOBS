@@ -38,3 +38,9 @@ html, body {
 .nav-pills > li > a:hover{
   background-color: red;
 }
+
+
+
+/*.pagination-active{
+  background-color: red;
+}*/

@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','angular-loading-bar','btford.socket-io']);
+var app = angular.module('myApp', ['ngRoute','angular-loading-bar','btford.socket-io',]);
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
    // $locationProvider.html5Mode(true);
    
@@ -44,9 +44,14 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 
 }]);
 
+// app.filter('startFrom', function(){
+//   return function(data,start){   // start variable is pass from startFrom filter , startFrom:start   while data is auto get from ng-repeat of that filter
+//      return data.slice(start);
+//   }
+// });
+
 
 app.factory('socket', function (socketFactory) {
-  debugger;
   return socketFactory({
     prefix: '',  // by default prefix is socket:
     ioSocket: io.connect(IP_SOCKET)

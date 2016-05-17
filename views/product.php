@@ -54,7 +54,7 @@
 				      </tr>
 				    </thead>
 				    <tbody>
-				      <tr ng-repeat="data in dataList | filter:keyword">  <!-- 2 ways binding  -->
+				      <tr ng-repeat="data in dataList | filter:keyword | limitTo:pageSize">  <!-- 2 ways binding  -->
 				        
 				        <td>  {{data.productId}}</td>
 				        <!-- <td>  {{data.productCode}}</td> -->
@@ -103,9 +103,27 @@
 
 				    </tbody>
 				  </table>
+
+				  
 		</div>	
-	</div> <!-- end of row -->	
+	</div> 
+	  <p>
+	     Total items: {{dataList.length}}<br />
+	     Items per page: {{pageSize}}<br />
+	     Current Page: {{currentPage}}
+	  </p>
+	
+	<ul class="pager">
+	  	<li class="previous disabled"><a href="#" ng-click="changeToPreviousPage()" >Previous</a></li>
+	  	<li ng-repeat="page in findTotalPages(paginationDataList.length)"> <!-- ng-repeat="i in array" , in this case findTotalPages is a function which return array-->
+	  		<a href="#" ng-click="changePagePagination(page+1)">{{page+1}}</a>
+	  	</li>		
+	  	<li class="next"><a href="#" ng-click="changeToNextPage()">Next</a></li> 
+	</ul>
+	
 </div>
+
+
 					
 
 
