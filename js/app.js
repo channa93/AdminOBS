@@ -1,4 +1,5 @@
-var app = angular.module('myApp', ['ngRoute','angular-loading-bar','btford.socket-io',]);
+var app = angular.module('myApp', ['ngRoute','angular-loading-bar','btford.socket-io', 'datatables']);
+//var app = angular.module('myApp', ['ngRoute','angular-loading-bar','btford.socket-io']);
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
    // $locationProvider.html5Mode(true);
    
@@ -64,6 +65,10 @@ app.factory('socket', function (socketFactory) {
 //     $("#base-url").attr("href", CLIENT_URL);
 // });
 
+
+
+// TODO
+//- integrate datatables to angularjs
 
 
 

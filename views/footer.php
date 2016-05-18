@@ -1,3 +1,4 @@
+	
 	<nav class="navbar navbar-inverse">
 		<div class="footer-left" style="float:left; margin-top: 10px;">
 			<p> <a href="http://borama.consulting/en" target="_blank" style="-webkit-text-fill-color: white">Borama Media</a> &copy; 2016</p>
