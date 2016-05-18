@@ -36,10 +36,26 @@
         	</div> 
 	        
 		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			Showing items per page: 
+	        <div class="btn-group" style="width:100%; ">
+        	  	<button type="button" class="btn btn-default  dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownPageSize" style="width:100px;">
+        	    5 <span class="caret" style="align:right;"></span>
+        	  	</button>
+        	  	<ul class="dropdown-menu" >
+        	    	<li> <a href="#"  ng-click="setPageSize(5)">5</a></li>     	    
+        	    	<li> <a href="#"  ng-click="setPageSize(10)">10</a></li>     	    
+        	    	<li> <a href="#"  ng-click="setPageSize(25)">25</a></li>     	    
+        	    	<li> <a href="#"  ng-click="setPageSize(50)">50</a></li>     	    
+        	    	<li> <a href="#"  ng-click="setPageSize(100)">50</a></li>     	    
+        	  	</ul>
+        	</div>
+		</div>
 	</div>
 	<div class="row" >
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<!-- <div class="table-responsive" > -->
+				<!-- <table class="table table-hover table-bordered table-responsive"> -->
 				<table class="table table-hover table-bordered table-responsive">
 				    <thead>
 				      <tr>
@@ -108,19 +124,57 @@
 		</div>	
 	</div> 
 	  <p>
-	     Total items: {{dataList.length}}<br />
+	     Total items: {{backupDataList.length}}<br />
 	     Items per page: {{pageSize}}<br />
 	     Current Page: {{currentPage}}
 	  </p>
+	 <div>
+	 	<p> <span style="font-style: italic;font-weight: bold; text-decoration: underline;">Showing:</span> 
+	 		from {{(currentPage-1)*pageSize +1 }} 
+	 		to {{(currentPage*pageSize > paginationDataList.length)?paginationDataList.length : currentPage*pageSize}} 
+	 		of {{paginationDataList.length}} 
+	 	</p>
+	 </div>
 	
 	<ul class="pager">
-	  	<li class="previous disabled"><a href="#" ng-click="changeToPreviousPage()" >Previous</a></li>
+	  	<li class="previous"><a href="#" ng-click="changeToPreviousPage()" >Previous</a></li>
 	  	<li ng-repeat="page in findTotalPages(paginationDataList.length)"> <!-- ng-repeat="i in array" , in this case findTotalPages is a function which return array-->
 	  		<a href="#" ng-click="changePagePagination(page+1)">{{page+1}}</a>
 	  	</li>		
 	  	<li class="next"><a href="#" ng-click="changeToNextPage()">Next</a></li> 
 	</ul>
-	
+
+
+	<!-- sample of usng angular-datatables -->
+	<!-- <div>
+		<table datatable="" class="row-border hover">
+		    <thead>
+		    <tr>
+		        <th>ID</th>
+		        <th>First name</th>
+		        <th>Last name</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+		    <tr>
+		        <td>1</td>
+		        <td>Foo</td>
+		        <td>Bar</td>
+		    </tr>
+		    <tr>
+		        <td>123</td>
+		        <td>Someone</td>
+		        <td>Youknow</td>
+		    </tr>
+		    <tr>
+		        <td>987</td>
+		        <td>Iamout</td>
+		        <td>Ofinspiration</td>
+		    </tr>
+		    </tbody>
+		</table>
+	</div>
+ -->	
 </div>
 
 

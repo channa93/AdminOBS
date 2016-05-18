@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 		<link rel="stylesheet" type="text/css" href="css/loading-bar.css">
+		<link rel="stylesheet" type="text/css" href="css/angular-datatables.css">
 		<!-- add meta tag to proper rendering in small device -->
 		<META NAME="viewport" CONTENT="width=device-width, height=device-height, initial-scale=1, user-scalable=yes"/>
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">	 -->
@@ -42,10 +43,12 @@
 		<!-- <script  src="js/utils.js"></script> 
 		<script  src="js/myapp.js"></script> -->
 
+		<script  type="text/javascript" src="js/jquery.dataTables.min.js"></script>  <!-- angular datatables require jquery dataTables --> 
+		<script  type="text/javascript" src="js/angular-datatables.js"></script> 
 		<script  type="text/javascript" src="js/socket-io-client.js"></script> 
-		<script  type="text/javascript" src="js/app.js"></script> 
 		<script  type="text/javascript" src="js/loading-bar.js"></script> 
 		<script  type="text/javascript" src="js/socket-io-module.js"></script> 
+		<script  type="text/javascript" src="js/app.js"></script> 
 		<script  type="text/javascript" src="controllers/utils.js"></script> 
 		<script  type="text/javascript" src="controllers/product-controller.js"></script> 
 		<script  type="text/javascript" src="controllers/user-controller.js"></script> 

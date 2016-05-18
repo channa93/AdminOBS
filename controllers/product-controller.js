@@ -134,6 +134,11 @@ app.controller('productController', function($scope, $http, $compile, $location,
 	    return arr;
 	}
 
+	$scope.setPageSize = function(pageSize){
+		$scope.pageSize = pageSize;
+		$('#dropdownPageSize').html(pageSize+CARET);
+	}
+
 });
 
 $(document).ready(function() {
