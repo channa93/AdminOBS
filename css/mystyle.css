@@ -44,3 +44,26 @@ html, body {
 /*.pagination-active{
   background-color: red;
 }*/
+
+
+.pagination>li.active>a, {
+  background: purple;
+  color: #fff;
+}
+ 
+
+.pagination>li:hover{
+  background: purple;
+  color: #fff;
+}
+
+
+
+// seeting rounded corner 
+/*ul.pagination li a {
+    border-radius: 5px;
+}
+
+ul.pagination li a.active {
+    border-radius: 5px;
+}*/

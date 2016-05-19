@@ -60,15 +60,14 @@ app.factory('socket', function (socketFactory) {
 });
 
 
-// // overide base url to place where this project is placed in
-// $(document).ready(function(){
-//     $("#base-url").attr("href", CLIENT_URL);
-// });
-
-
-
-// TODO
-//- integrate datatables to angularjs
+// Set active page for pagination by adding class active to page1
+app.directive('onLastRepeatPagination', function() {
+    return function(scope, element, attrs) {
+        if (scope.$last) setTimeout(function(){
+            $('ul#my-pagination li.page1').addClass('active');
+        }, 1);
+    };
+});
 
 
 

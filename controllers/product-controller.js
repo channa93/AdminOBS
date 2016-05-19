@@ -24,6 +24,7 @@ app.controller('productController', function($scope, $http, $compile, $location,
 				$scope.dataList = response.data.data;            // dataList to show to users 
 				$scope.backupDataList = response.data.data;      // used for search
 				$scope.paginationDataList = response.data.data;  // used for doing pagination
+
 			}else{
 				alert(response.data['description']);
 			}		
@@ -53,6 +54,8 @@ app.controller('productController', function($scope, $http, $compile, $location,
 		socket.on('sendMessage1', function(data) {
 			debugger;
 		});
+
+
 
 	}
 	$scope.clickProductStatus = function(productStatus,statusText){
@@ -93,15 +96,20 @@ app.controller('productController', function($scope, $http, $compile, $location,
 	// }
 
 	/*  Pagination handler*/
-	$scope.changePagePagination = function(toPageNumber){	
+	$scope.changePagePagination = function($event, toPageNumber){
+		var currentElement = $event.target;
+		// update scope variable	
 		console.log("*change to page: "+toPageNumber);
 		$scope.currentPage = toPageNumber;
-		var newStartIndex = ($scope.currentPage-1)*$scope.pageSize;  // because array start index from 0
+		var newStartIndex = ($scope.currentPage-1)*$scope.pageSize;    // because array start index from 0
 		$scope.dataList = $scope.backupDataList.slice(newStartIndex);  // update dataList scope variable that is showing at client
+		
+		// update pagination style bg color
+		$('ul#my-pagination li.active').removeClass('active');
+		$(currentElement).closest('li').addClass('active');             // using jquery
+		//$event.target.closest('li').setAttribute('class','active');  // using javascript
 	}
 	$scope.changeToPreviousPage = function(){	
-		//TODO : check if we already reach the first page
-		debugger;
 		if($scope.currentPage > 1){
 			console.log("*change to previous page", $scope.currentPage-1);
 				// change currentPage watcher
@@ -109,25 +117,37 @@ app.controller('productController', function($scope, $http, $compile, $location,
 				// find new starting index for slicing from dataList
 			var newStartIndex = ($scope.currentPage-1)*$scope.pageSize;  // because array start index from 0
 			$scope.dataList = $scope.backupDataList.slice(newStartIndex);
+			
+			// update pagination style bg color
+			$('ul#my-pagination li.active').removeClass('active');
+			$('ul#my-pagination li.page'+$scope.currentPage).addClass('active');
 		}else{
 			alert('OOp! you are already at the beginning page! can not go to previous anymore!')
-		}
-		
+		}	
 	}
 	$scope.changeToNextPage = function(){
 		//TODO : check if we already reach the end page
+		var lastPage = Math.ceil($scope.paginationDataList.length/$scope.pageSize);
+		if( $scope.currentPage < lastPage){
+			console.log("*change to next page: ", $scope.currentPage+1);
+				// change currentPage watcher
+			$scope.currentPage = $scope.currentPage+1 ;
+				// find new starting index for slicing from dataList
+			var newStartIndex = ($scope.currentPage-1)*$scope.pageSize;  // because array start index from 0
+			$scope.dataList = $scope.backupDataList.slice(newStartIndex);
 
-		console.log("*change to next page: ", $scope.currentPage+1);
-			// change currentPage watcher
-		$scope.currentPage = $scope.currentPage+1 ;
-			// find new starting index for slicing from dataList
-		var newStartIndex = ($scope.currentPage-1)*$scope.pageSize;  // because array start index from 0
-		$scope.dataList = $scope.backupDataList.slice(newStartIndex);
+			// update pagination style bg color
+			$('ul#my-pagination li.active').removeClass('active');
+			$('ul#my-pagination li.page'+$scope.currentPage).addClass('active');
+		}else{
+			alert('OOp! you are already at the end page! can not go to next page anymore!')
+		}
 		
 	}
-	$scope.findTotalPages = function (totalDatas) {
+	$scope.findTotalPages = function () {
 	    var arr = [];
-	    var range = totalDatas/$scope.pageSize; 
+	    var totalDatas = $scope.paginationDataList.length;
+	    var range = Math.ceil(totalDatas/$scope.pageSize); 
 	    for (var i = 0; i < range; i++) {
 	        arr.push(i);
 	    }
@@ -141,13 +161,12 @@ app.controller('productController', function($scope, $http, $compile, $location,
 
 });
 
-$(document).ready(function() {
-	
-
+$(document).ready(function() {	
 	$('ul#my-navbar li a').click(function() {  // when click a in ul where id=my-navbar
 	    $('ul#my-navbar li.active').removeClass('active');
 	    $(this).closest('li').addClass('active');
 	});
+
 
 	// TODO : can not handle on select option change
 
@@ -171,6 +190,10 @@ $(document).ready(function() {
 
 
 });
+
+
+// TODO: by default add active class to page 1
+//$('ul#my-pagination li.page1').addClass('active');
 
 
 

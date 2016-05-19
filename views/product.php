@@ -47,7 +47,7 @@
         	    	<li> <a href="#"  ng-click="setPageSize(10)">10</a></li>     	    
         	    	<li> <a href="#"  ng-click="setPageSize(25)">25</a></li>     	    
         	    	<li> <a href="#"  ng-click="setPageSize(50)">50</a></li>     	    
-        	    	<li> <a href="#"  ng-click="setPageSize(100)">50</a></li>     	    
+        	    	<li> <a href="#"  ng-click="setPageSize(100)">100</a></li>     	    
         	  	</ul>
         	</div>
 		</div>
@@ -118,9 +118,7 @@
 				      </tr>
 
 				    </tbody>
-				  </table>
-
-				  
+				  </table>				  
 		</div>	
 	</div> 
 	  <p>
@@ -136,15 +134,15 @@
 	 	</p>
 	 </div>
 	
-	<ul class="pager">
+	<!-- <ul class="pager" id="my-pagination"> -->
+	<ul class="pagination" id="my-pagination">
 	  	<li class="previous"><a href="#" ng-click="changeToPreviousPage()" >Previous</a></li>
-	  	<li ng-repeat="page in findTotalPages(paginationDataList.length)"> <!-- ng-repeat="i in array" , in this case findTotalPages is a function which return array-->
-	  		<a href="#" ng-click="changePagePagination(page+1)">{{page+1}}</a>
-	  	</li>		
+	  	<li ng-repeat="page in findTotalPages()" class="page{{page+1}}" on-last-repeat-pagination> <!-- call directive on-last-repeat-pagination for styling our pagination bg color for the page1 -->
+	  		<a href="#" ng-click="changePagePagination($event, page+1)">{{page+1}}</a>
+	  	</li>
 	  	<li class="next"><a href="#" ng-click="changeToNextPage()">Next</a></li> 
 	</ul>
-
-
+	
 	<!-- sample of usng angular-datatables -->
 	<!-- <div>
 		<table datatable="" class="row-border hover">
