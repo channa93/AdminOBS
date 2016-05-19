@@ -70,5 +70,9 @@ app.directive('onLastRepeatPagination', function() {
 });
 
 
+// TODO
+//- integrate datatables to angularjs
+
+
 
 

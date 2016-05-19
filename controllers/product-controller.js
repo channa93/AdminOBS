@@ -1,7 +1,6 @@
 app.controller('productController', function($scope, $http, $compile, $location, socket) {
 	$scope.backupDataList = [];
 	$scope.dataList = [];
-	$scope.paginationDataList = [];
 	$scope.productStatus ={
 		0:'All Status',
 		1:"Review",
@@ -13,6 +12,7 @@ app.controller('productController', function($scope, $http, $compile, $location,
 	// pagination
 	$scope.currentPage=1;
 	$scope.pageSize=5;
+	$scope.paginationDataList = [];
 	
 	$scope.getAllProducts = function() {	
 		var req = getObjRequest(URL_ALL_PRODUCTS, 'GET');
@@ -50,7 +50,6 @@ app.controller('productController', function($scope, $http, $compile, $location,
 		socket.on('angularConnect', function(data) {
 			debugger;
 		});
-		// debugg1er;
 		socket.on('sendMessage1', function(data) {
 			debugger;
 		});
@@ -88,12 +87,6 @@ app.controller('productController', function($scope, $http, $compile, $location,
 		debugger;
 	}
 
-	// $scope.pagination = function(){
-	// 	return function(data, start) {
-	// 			debugger;
-	// 	        return data.slice(start);
-	// 	}
-	// }
 
 	/*  Pagination handler*/
 	$scope.changePagePagination = function($event, toPageNumber){
@@ -185,15 +178,9 @@ $(document).ready(function() {
 	// function selectProductStatus(ele) {
 	// 	debugger;
 	// }
-
-	
-
-
 });
 
 
-// TODO: by default add active class to page 1
-//$('ul#my-pagination li.page1').addClass('active');
 
 
 

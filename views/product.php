@@ -134,6 +134,7 @@
 	 	</p>
 	 </div>
 	
+
 	<!-- <ul class="pager" id="my-pagination"> -->
 	<ul class="pagination" id="my-pagination">
 	  	<li class="previous"><a href="#" ng-click="changeToPreviousPage()" >Previous</a></li>
@@ -142,6 +143,8 @@
 	  	</li>
 	  	<li class="next"><a href="#" ng-click="changeToNextPage()">Next</a></li> 
 	</ul>
+	
+
 	
 	<!-- sample of usng angular-datatables -->
 	<!-- <div>
